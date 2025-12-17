@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyAce - Jreng Maksimal!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style> 
+/* --- 1. WARNA & DASAR (VARIABLE) --- */
+:root {
+    --biru-jreng: #1048b9;      
+    --navy-jreng: #2D3648;      
+    --biru-cyan: #00D2FF;       
+    --kuning-jreng: #F4A641;    /* Oranye Stabil */
+    --warna-teks: #0A0A0A;
+    --putih-bersih: #FFFFFF;
+    --abu-muda: #f0f4ff;
+    --merah-jreng: #FF3131;
+    --ungu-jreng: #8A2BE2;
+    --hijau-jreng: #2ecc71;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background-color: var(--putih-bersih); 
+    color: var(--warna-teks); 
+    overflow-x: hidden; 
+}
+
+.container { 
+    width: 92%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    position: relative; 
+    z-index: 10; 
+}
+
+/* --- 2. ORNAMEN & ANIMASI --- */
+.global-ornament {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.9; 
+    pointer-events: none;
+    animation: floating-jreng 5s ease-in-out infinite;
+}
+.pill { border-radius: 50px; background: var(--biru-jreng); border: 3px solid #000; box-shadow: 5px 5px 0px #000; }
+.ring { border: 15px solid var(--biru-cyan); border-radius: 50%; background: transparent; filter: drop-shadow(5px 5px 0px #000); }
+.square { background: var(--kuning-jreng); transform: rotate(15deg); border-radius: 10px; border: 4px solid #000; box-shadow: 6px 6px 0px #000; }
+
+@keyframes floating-jreng {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    50% { transform: translateY(-35px) rotate(10deg) scale(1.1); }
+}
+
+@keyframes spin-jreng {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-jreng {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.spin { animation: spin-jreng 10s linear infinite; }
+.pulse { animation: pulse-jreng 3s ease-in-out infinite; }
+
+/* --- 3. HEADER & NAVBAR --- */
+#main-header { 
+    position: fixed; width: 100%; z-index: 1000; padding: 40px 0; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+#main-header.scrolled { 
+    background: var(--navy-jreng); padding: 12px 0; 
+    box-shadow: 0 8px 0px #000; border-bottom: 4px solid #000;
+}
+
+.navbar-content { display: flex; justify-content: space-between; align-items: center; }
+
+.logo img { 
+    height: 85px; width: auto; display: block; 
+    filter: drop-shadow(6px 6px 0px rgba(0,0,0,0.2));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#main-header.scrolled .logo img { height: 45px; filter: none; }
+
+.nav-menu ul { display: flex; gap: 15px; list-style: none; margin: 0; padding: 0; }
+.nav-menu a {
+    display: inline-block; padding: 12px 28px; border-radius: 12px; background: #fff; 
+    font-weight: 800; color: var(--biru-jreng); border: 3px solid #000; 
+    box-shadow: 5px 5px 0px #000; transition: 0.2s; text-transform: uppercase; text-decoration: none; font-size: 0.9rem;
+}
+.nav-menu a:hover { 
+    transform: translate(-3px, -3px); 
+    box-shadow: 8px 8px 0px var(--kuning-jreng); 
+    background: var(--warna-teks); color: #fff; 
+}
+#main-header.scrolled .nav-menu a { 
+    background: var(--kuning-jreng); color: #000; padding: 8px 20px; font-size: 0.8rem; 
+}
+
+/* --- 4. HERO SECTION --- */
+.hero-section {
+    padding: 240px 0 100px 0; min-height: 100vh;
+    background: radial-gradient(circle at 50% 50%, #fff 0%, #eef2ff 100%);
+    display: flex; align-items: center; position: relative; overflow: hidden;
+}
+.hero-flex {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;
+}
+.hero-text { flex: 1.2; min-width: 300px; }
+.hero-text h1 { 
+    font-size: 3.5rem; 
+    font-weight: 900; line-height: 1.1; margin-bottom: 25px; letter-spacing: -2px; text-transform: uppercase; 
+}
+.highlight { 
+    color: var(--biru-jreng); 
+    text-shadow: 6px 6px 0px var(--biru-cyan); 
+    -webkit-text-stroke: 2px #000; 
+}
+
+.btn-jreng {
+    padding: 20px 50px; border-radius: 15px; font-weight: 900; font-size: 1.2rem;
+    cursor: pointer; transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 4px solid #000; text-transform: uppercase;
+}
+.btn-primary { background: var(--biru-jreng); color: #fff; box-shadow: 8px 8px 0px #000; margin-right: 15px; }
+.btn-secondary { background: var(--kuning-jreng); color: #000; box-shadow: 8px 8px 0px #000; }
+.btn-jreng:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px var(--biru-cyan); }
+
+.hero-image { 
+    flex: 0.8; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    min-width: 350px; 
+    position: relative;
+}
+.hero-image img { 
+    width: 220px; 
+    filter: drop-shadow(15px 15px 0px var(--biru-jreng)); 
+    animation: float-hp 4s ease-in-out infinite; 
+}
+.hp-2 {
+    margin-left: -60px;
+    margin-top: 80px;
+    animation-delay: 0.5s !important;
+}
+
+@keyframes float-hp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+/* --- 5. FITUR SECTION --- */
+.highlight-section { padding: 150px 0; position: relative; overflow: hidden; }
+.advantage-flow {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 80px 40px; 
+    margin-top: 80px;
+}
+.item-card {
+    background: #fff; padding: 60px 30px 40px; border-radius: 40px;
+    border: 4px solid #000; box-shadow: 12px 12px 0px #000;
+    text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative; z-index: 5;
+}
+.item-card:hover { 
+    transform: translateY(-20px) rotate(-3deg) scale(1.05); 
+    background-color: var(--kuning-jreng); /* HOVER ORANGE */
+    box-shadow: 20px 20px 0px var(--biru-jreng); 
+}
+
+.num-box {
+    width: 80px; height: 80px; color: #fff;
+    font-size: 2.5rem; font-weight: 900; border-radius: 20px;
+    display: flex; justify-content: center; align-items: center;
+    position: absolute; top: -40px; left: 50%; transform: translateX(-50%) rotate(-10deg);
+    border: 4px solid #000;
+}
+
+.n1 { background: var(--biru-jreng); }
+.n2 { background: var(--biru-cyan); }
+.n3 { background: var(--merah-jreng); }
+.n4 { background: var(--ungu-jreng); }
+.n5 { background: var(--hijau-jreng); }
+.n6 { background: var(--kuning-jreng); color: #000; }
+
+/* --- 6. PRICING SECTION --- */
+.pricing-section { padding: 120px 0; background: var(--abu-muda); text-align: center; position: relative; overflow: hidden; }
+.pricing-grid { 
+    display: flex; 
+    justify-content: center; 
+    gap: 25px; 
+    margin-top: 60px;
+}
+
+.price-card { 
+    background: var(--kuning-jreng); 
+    padding: 45px 25px; 
+    border-radius: 40px; 
+    border: 5px solid #000; 
+    box-shadow: 12px 12px 0px var(--biru-jreng); 
+    flex: 1; 
+    min-height: 520px; 
+    display: flex; 
+    flex-direction: column; 
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.price-card:hover:not(.locked) { 
+    transform: translateY(-15px); 
+    box-shadow: 18px 18px 0px #000; 
+}
+
+.price-card.locked { filter: grayscale(1); opacity: 0.8; cursor: not-allowed; }
+
+.soon-label {
+    position: absolute; top: 25px; right: -35px; background: var(--merah-jreng);
+    color: #fff; padding: 10px 45px; font-weight: 900; font-size: 0.9rem;
+    transform: rotate(45deg); border: 3px solid #000; box-shadow: 0 4px 0 #000;
+    z-index: 5; text-transform: uppercase;
+}
+
+.old-price { font-size: 1.1rem; color: #444; text-decoration: line-through; font-weight: 700; display: block; }
+.new-price { 
+    font-size: 3.5rem; font-weight: 900; color: #fff; 
+    -webkit-text-stroke: 1.5px #000; margin-bottom: 25px; line-height: 1; 
+}
+
+.price-desc { text-align: left; list-style: none; margin-bottom: 35px; flex-grow: 1; }
+.price-desc li { 
+    font-size: 0.9rem; font-weight: 800; margin-bottom: 12px; 
+    display: flex; align-items: center; gap: 10px; color: #000;
+}
+.price-desc li i { color: #fff; -webkit-text-stroke: 1px #000; }
+
+/* --- 9. FOOTER --- */
+footer { 
+    padding: 80px 0; background: var(--warna-teks); color: #fff; 
+    text-align: center; 
+}
+footer p { font-weight: 900; font-size: 1.8rem; letter-spacing: 2px; }
+
+/* --- 10. RESPONSIVE --- */
+@media (max-width: 1200px) { 
+    .pricing-grid { flex-wrap: wrap; }
+    .price-card { min-width: 45%; margin-bottom: 25px; }
+}
+@media (max-width: 992px) { 
+    .hero-image { min-width: 100%; margin-top: 40px; }
+    .hero-image img { width: 150px; }
+    .advantage-flow { grid-template-columns: repeat(2, 1fr); }
+    .nav-menu { display: none; }
+}
+@media (max-width: 768px) {
+    .advantage-flow { grid-template-columns: 1fr; }
+    .price-card { min-width: 100%; }
+}
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <nav class="navbar-content">
+                <div class="logo">
+                    <a href="#"><img src="assets/studyace-inside.png" alt="StudyAce Logo"></a>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="#hero">BERANDA</a></li>
+                        <li><a href="#fitur">KEUNGGULAN</a></li>
+                        <li><a href="#harga">PRICING</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="global-ornament pill" style="width: 180px; height: 50px; top: 15%; left: -20px; transform: rotate(-15deg);"></div>
+        <div class="global-ornament ring" style="width: 120px; height: 120px; top: 10%; right: 10%;"></div>
+        <div class="global-ornament square" style="width: 80px; height: 80px; bottom: 15%; left: 5%;"></div>
+
+        <div class="container">
+            <div class="hero-flex">
+                <div class="hero-text">
+                    <p style="background: #000; color: #fff; display: inline-block; padding: 6px 18px; font-weight: 900; margin-bottom: 20px; border-radius: 4px;">⚡ BEST LEARNING PLATFORM</p>
+                    <h1>Satu Langkah Lebih Dekat<br><span class="highlight">Menuju Impianmu</span></h1>
+                    <p style="font-weight: 700; font-size: 1.2rem; max-width: 550px; margin-bottom: 40px; color: #141414;">Belajar Lebih Terarah Bersama STUDYACE</p>
+                    <div class="hero-cta-group">
+                        <button class="btn-jreng btn-primary">MASUK</button>
+                        <button class="btn-jreng btn-secondary">DAFTAR</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/handphone1.png" alt="App Preview 1">
+                    <img src="assets/handphone2.png" alt="App Preview 2" class="hp-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fitur" class="highlight-section">
+        <div class="global-ornament pill pulse" style="width: 150px; height: 40px; top: 5%; left: -50px; background: var(--merah-jreng); transform: rotate(45deg);"></div>
+        <div class="global-ornament square spin" style="width: 60px; height: 60px; top: 15%; right: 5%; background: var(--biru-cyan);"></div>
+        <div class="global-ornament ring pulse" style="width: 180px; height: 180px; top: 40%; left: -80px; border-color: var(--ungu-jreng); opacity: 0.4;"></div>
+        <div class="global-ornament pill spin" style="width: 100px; height: 30px; bottom: 10%; left: 20%; background: var(--hijau-jreng);"></div>
+        <div class="global-ornament square pulse" style="width: 100px; height: 100px; top: 50%; right: -30px; background: var(--biru-jreng); transform: rotate(-20deg);"></div>
+        <div class="global-ornament ring" style="width: 200px; height: 200px; bottom: -50px; right: -50px; opacity: 0.3;"></div>
+        
+        <div class="container">
+            <h2 style="font-size: 4rem; font-weight: 900; text-align: center; margin-bottom: 120px; -webkit-text-stroke: 2px #000; text-transform: uppercase;">KENAPA KITA?</h2>
+            <div class="advantage-flow">
+                <div class="item-card"><div class="num-box n1">1</div><h3 style="font-weight:900;">MATERI TERSTRUKTUR</h3><p>Materi disusun secara sistematis sesuai kisi-kisi terbaru UTBK, CPNS, PPPK, dan kedinasan.</p></div>
+                <div class="item-card"><div class="num-box n2">2</div><h3 style="font-weight:900;">AKSES FLEKSIBEL</h3><p>Belajar bisa dilakukan lewat website dengan akses 24 jam, tanpa terikat tempat dan waktu.</p></div>
+                <div class="item-card"><div class="num-box n3">3</div><h3 style="font-weight:900;">PEMBAHASAN LENGKAP</h3><p>Setiap soal dibahas dengan bahasa yang jelas, logis, dan step-by-step.</p></div>
+                <div class="item-card"><div class="num-box n4">4</div><h3 style="font-weight:900;">HARGA TERJANGKAU</h3><p>Dengan biaya yang relatif ringan, siswa mendapatkan fasilitas belajar lengkap.</p></div>
+                <div class="item-card"><div class="num-box n5">5</div><h3 style="font-weight:900;">SEMUA SELEKSI</h3><p>STUDYACE dirancang untuk membantu persiapan UTBK, Kedinasan, CPNS dan BUMN.</p></div>
+                <div class="item-card"><div class="num-box n6">6</div><h3 style="font-weight:900;">HASIL NYATA</h3><p>Seluruh sistem belajar diarahkan untuk meningkatkan peluang lolos seleksi secara nyata.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="harga" class="pricing-section">
+        <div class="container">
+            <h2 style="font-size: 3.5rem; font-weight: 900; -webkit-text-stroke: 2px #000; text-transform: uppercase;">MULAI BELAJAR MU SEKARANG!</h2>
+            <div class="pricing-grid">
+                
+                <div class="price-card">
+                    <p style="font-weight: 900; font-size: 1.1rem; text-decoration: underline; margin-bottom: 15px;">PAKET UTBK</p>
+                    <span class="old-price">Rp 499.000</span>
+                    <h2 class="new-price">49K</h2>
+                    <ul class="price-desc">
+                        <li><i class="fas fa-check-circle"></i> Materi Pembelajaran Lengkap</li>
+                        <li><i class="fas fa-check-circle"></i> Video Pembahasan Materi</li>
+                        <li><i class="fas fa-check-circle"></i> 20 Paket Soal dan Pembahasan</li>
+                        <li><i class="fas fa-check-circle"></i> Akses 1 Tahun</li>
+                    </ul>
+                    <button class="btn-jreng btn-primary" style="width: 100%; padding: 15px; margin-top: auto;">BELI PAKET</button>
+                </div>
+
+                <div class="price-card locked">
+                    <div class="soon-label">SOON!</div>
+                    <p style="font-weight: 900; font-size: 1.1rem; text-decoration: underline; margin-bottom: 15px;">PAKET CPNS</p>
+                    <span class="old-price">Rp 499.000</span>
+                    <h2 class="new-price">49K</h2>
+                    <ul class="price-desc">
+                        <li><i class="fas fa-check-circle"></i> Materi Pembelajaran Lengkap</li>
+                        <li><i class="fas fa-check-circle"></i> Video Pembahasan Materi</li>
+                        <li><i class="fas fa-check-circle"></i> 20 Paket Soal dan Pembahasan</li>
+                        <li><i class="fas fa-check-circle"></i> Akses 1 Tahun</li>
+                    </ul>
+                    <button class="btn-jreng" style="width: 100%; padding: 15px; margin-top: auto; background:#888; color:#fff; border:3px solid #000;">COMING SOON</button>
+                </div>
+
+                <div class="price-card">
+                    <p style="font-weight: 900; font-size: 1.1rem; text-decoration: underline; margin-bottom: 15px;">PAKET KEDINASAN</p>
+                    <span class="old-price">Rp 499.000</span>
+                    <h2 class="new-price">49K</h2>
+                    <ul class="price-desc">
+                        <li><i class="fas fa-check-circle"></i> Materi Pembelajaran Lengkap</li>
+                        <li><i class="fas fa-check-circle"></i> Video Pembahasan Materi</li>
+                        <li><i class="fas fa-check-circle"></i> 20 Paket Soal dan Pembahasan</li>
+                        <li><i class="fas fa-check-circle"></i> Akses 1 Tahun</li>
+                    </ul>
+                    <button class="btn-jreng btn-primary" style="width: 100%; padding: 15px; margin-top: auto;">BELI PAKET</button>
+                </div>
+
+                <div class="price-card locked">
+                    <div class="soon-label">SOON!</div>
+                    <p style="font-weight: 900; font-size: 1.1rem; text-decoration: underline; margin-bottom: 15px;">PAKET BUMN</p>
+                    <span class="old-price">Rp 499.000</span>
+                    <h2 class="new-price">49K</h2>
+                    <ul class="price-desc">
+                        <li><i class="fas fa-check-circle"></i> Materi Pembelajaran Lengkap</li>
+                        <li><i class="fas fa-check-circle"></i> Video Pembahasan Materi</li>
+                        <li><i class="fas fa-check-circle"></i> 20 Paket Soal dan Pembahasan</li>
+                        <li><i class="fas fa-check-circle"></i> Akses 1 Tahun</li>
+                    </ul>
+                    <button class="btn-jreng" style="width: 100%; padding: 15px; margin-top: auto; background:#888; color:#fff; border:3px solid #000;">COMING SOON</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>STUDYACE. ALL RIGHT RESERVED</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    </script>
+</body>
+</html>
